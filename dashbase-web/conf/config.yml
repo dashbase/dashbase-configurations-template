@@ -1,0 +1,18 @@
+server:
+  applicationContextPath: /
+  adminContextPath: /admin
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8180
+
+website:
+  cdn: "https://cdn.domain.com"
+  domain: "https://www.domain.com"
+  name: "Dashbase Web"
+
+backend: # API host
+  host: localhost
+  port: 9876

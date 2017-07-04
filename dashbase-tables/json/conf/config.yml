@@ -1,0 +1,66 @@
+dashbase:
+  baseDir: ../index
+
+  cluster:
+    name: example-json
+    url: localhost:2181
+
+  firehose:
+    type: file
+    params:
+      file: ../data/nginx.json
+
+  indexer:
+    maxIndexingDelayInSec: 5
+
+  parser:
+    type: json
+    params:
+      pattern:
+        timeFormat: "dd/MMM/yyyy:HH:mm:ss Z"
+        schema:
+          - name: timestamp
+            type: time
+          - name: host
+            type: meta
+          - name: request
+            type: text
+          - name: responseCode
+            type: meta
+          - name: numBytes
+            type: numeric
+          - name: agent
+            type: text
+
+server:
+  applicationContextPath: /
+  adminContextPath: /admin
+  applicationConnectors:
+    - type: http
+      port: 7888
+  adminConnectors:
+    - type: http
+      port: 7988
+
+metrics:
+  reporters:
+    - type: dashbase
+      url: localhost:9888 # host port of monitor
+      includes:
+        - ^jvm.*$
+        - ^dashbase.*$
+      useRegexFilters: true
+      frequency: 5 seconds
+
+logging:
+  level: INFO
+  appenders:
+      - type: file
+        currentLogFilename: ../logs/example-json.log
+        archive: true
+        archivedLogFilenamePattern: ../logs/example-json-%d.log
+        archivedFileCount: 7
+        timeZone: UTC
+      - type: dashbase
+        url: localhost:9888 # host port of monitor
+        timeZone: UTC

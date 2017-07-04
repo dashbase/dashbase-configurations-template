@@ -1,0 +1,42 @@
+cluster:
+  name: example-api
+  url: localhost:2181 # zookeeper url
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 9876
+  applicationContextPath: /
+  adminContextPath: /admin
+  adminConnectors:
+      - type: http
+        port: 9976
+
+metrics:
+  reporters:
+    - type: dashbase
+      url: localhost:9888 # host port of monitor
+      meta:
+        name: example-api
+        type: dashbase-api
+      includes:
+        - ^jvm.*$
+        - ^dashbase.*$
+      useRegexFilters: true
+      frequency: 5 seconds
+
+logging:
+  level: INFO
+  appenders:
+      - type: file
+        currentLogFilename: ../logs/dashbase-api.log
+        archive: true
+        archivedLogFilenamePattern: ../logs/dashbase-api-%d.log
+        archivedFileCount: 7
+        timeZone: UTC
+      - type: dashbase
+        url: localhost:9888  # host port of monitor
+        meta:
+          name: example-api
+          type: dashbase-api
+        timeZone: UTC

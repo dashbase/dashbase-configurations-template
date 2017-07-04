@@ -1,0 +1,69 @@
+dashbase:
+  baseDir: ../index
+
+  cluster:
+    name: example-regex
+    url: ${ZOOKEEPER_URL}
+
+  firehose:
+    type: file
+    params:
+      file: ../data/nginx.log"
+
+  indexer:
+    maxIndexingDelayInSec: 5
+
+  parser:
+    type: regex
+    params:
+      patterns:
+        regex: "^([\\d.]+) (\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) (\\d+) \"([^\"]+)\" \"([^\"]+)\""
+        timeFormat: "dd/MMM/yyyy:HH:mm:ss Z"
+        schema:
+          - name: host
+            type: meta
+          - type: '-'
+          - type: '-'
+          - type: '-'
+          - type: time
+          - name: request
+            type: text
+          - name: response
+            type: meta
+          - name: bytesSent
+            type: numeric
+          - type: '-'
+          - type: '-'
+          - name: agent
+            type: text
+
+server:
+  applicationConnectors:
+  - type: http
+    port: ${PORT}
+  adminConnectors:
+  - type: http
+    port: ${ADMINPORT}
+
+metrics:
+  reporters:
+    - type: dashbase
+      url: ${MONITOR_URL} # host port of monitor
+      includes:
+        - ^jvm.*$
+        - ^dashbase.*$
+      useRegexFilters: true
+      frequency: 5 seconds
+
+logging:
+  level: INFO
+  appenders:
+      - type: file
+        currentLogFilename: logs/example-regex.log
+        archive: true
+        archivedLogFilenamePattern: logs/example-regex-%d.log
+        archivedFileCount: 7
+        timeZone: UTC
+      - type: dashbase
+        url: ${MONITOR_URL} # host port of monitor
+        timeZone: UTC
