@@ -1,5 +1,5 @@
 dashbase:
-  baseDir: ../index
+  baseDir: /data/index
 
   cluster:
     name: example-json
@@ -8,7 +8,7 @@ dashbase:
   firehose:
     type: file
     params:
-      file: ../data/nginx.json
+      file: /data/input/nginx.json
 
   indexer:
     maxIndexingDelayInSec: 5
@@ -56,9 +56,9 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: ../logs/example-json.log
+        currentLogFilename: logs/example-json.log
         archive: true
-        archivedLogFilenamePattern: ../logs/example-json-%d.log
+        archivedLogFilenamePattern: logs/example-json-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
