@@ -8,3 +8,27 @@ and mapping of machines to the services that should be installed on each.
 Dashbase is controlled by a CLI. The machine running the CLI is referred to as the "master machine". The master machine also
 contains the config directory for the deployment.
 
+├── dashbase-api
+│   └── conf
+│       ├── config.yml
+│       └── env-config.yml
+├── dashbase-tables
+│   ├── json
+│   │   ├── conf
+│   │   │   ├── config.yml
+│   │   │   └── env-config.yml
+│   │   └── data
+│   │       ├── nginx.json
+│   │       └── test_json.log
+│   └── regex
+│       ├── conf
+│       │   ├── config.yml
+│       │   └── env-config.yml
+│       └── data
+│           └── nginx.log
+├── dashbase-web
+│   └── conf
+│       ├── config.yml
+│       └── env-config.yml
+└── dashbase.yml
+
