@@ -12,7 +12,7 @@ contains the config directory for the deployment.
 ## Start a Dashbase deployment
 The following will help you start a deployment of 1 remote machine, controlled by your macbook, the "master machine".
 
-The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4886e
+The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4886e and Security Group "Dashbase Single Instance"
 
 The work to make Dashbase run is something like this:
 
