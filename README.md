@@ -12,7 +12,7 @@ contains the config directory for the deployment.
 ## Start a Dashbase deployment
 The following will help you start a deployment of 1 remote machine, controlled by your macbook, the "master machine".
 
-The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4886e
+The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4886e and Security Group "Dashbase Single Instance"
 
 The work to make Dashbase run is something like this:
 
@@ -31,26 +31,28 @@ alexmunk$ sudo pip install dashbase
 alexmunk$ dashbase config
 alexmunk$ dashbase version
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
+alexmunk$ mkdir dashbase-alexs-deployment
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
 alexmunk$ cd dashbase-alexs-deployment
 alexmunk$ rm -rf .git
 alexmunk$ rm -rf .gitignore
-alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@54.153.4.215:/data/input/
+alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/data/input/
 alexmunk$ vi dashbase.yml
-- Delete host2
-- add remote host IP to host1 config block
-- Added path to ssh key: ~/.ssh/dashbase_alex_keypair.pem
-- swap out all cases of host2 with host1
-- Change all cases of MONITOR_URL: to <remote host IP>:9888
-- Change web.API_HOST: to <remote host IP>
-- Change web.API_PORT: to 9876 (to match the configured api port in the same file)
-- Change prefix to name the deployment. i.e. “alexs-deployment”
+- set prefix to your chosen name of the deployment. i.e. prefix: “alexs-deployment”
+- set hosts.host1.hostname: remote-host-IP
+- set hosts.host1.username: ec2-user
+- set hosts.host1.private_key: ~/.ssh/your_ssh_key.pem
+- delete hosts.host2 configuration block
+- change all cases of host2 to host1
+- set all cases of MONITOR_URL: remote-host-IP:9888 (there's probably one in api and another in json table)
+- set web.env.API_HOST: remote-host-IP
+- set web.env.API_PORT: 9876 (to match the configured api port in the same file)
 
 alexmunk$ dashbase start cluster --config ~/Dev/dashbase-alexs-deployment/dashbase.yml all
 
 [ec2-user@ip-172-31-10-146 ~]$ dashbase ps (should list all Dashbase services defined in dashbase.yml)
 ```
 
-Visit: https://host-IP-where-Web-is-running:8080/search
+Visit: http://remote-host-IP:8080/search
 
 
