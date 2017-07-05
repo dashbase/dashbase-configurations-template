@@ -18,10 +18,8 @@ dashbase:
     type: json
     params:
       pattern:
-        timeFormat: "dd/MMM/yyyy:HH:mm:ss Z"
+        timeFormat: now
         schema:
-          - name: timestamp
-            type: time
           - name: host
             type: meta
           - name: request
