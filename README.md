@@ -38,7 +38,7 @@ alexmunk$ rm -rf .git
 alexmunk$ rm -rf .gitignore
 alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/data/input/
 alexmunk$ vi dashbase.yml
-- set prefix to your chosen name of the deployment. i.e. “alexs-deployment”
+- set prefix to your chosen name of the deployment. i.e. prefix: “alexs-deployment”
 - set hosts.host1.hostname: remote-host-IP
 - set hosts.host1.username: ec2-user
 - set hosts.host1.private_key: ~/.ssh/your_ssh_key.pem
