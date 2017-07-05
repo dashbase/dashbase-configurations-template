@@ -43,7 +43,7 @@ alexmunk$ vi dashbase.yml
 - set hosts.host1.username: ec2-user
 - set hosts.host1.private_key: ~/.ssh/your_ssh_key.pem
 - delete hosts.host2 configuration block
-- swap out all cases of host2 with host1
+- change all cases of host2 to host1
 - set all cases of MONITOR_URL: remote-host-IP:9888 (there's probably one in api and another in json table)
 - set web.env.API_HOST: remote-host-IP
 - set web.env.API_PORT: 9876 (to match the configured api port in the same file)
