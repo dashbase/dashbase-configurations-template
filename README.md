@@ -30,8 +30,6 @@ alexmunk$ rm -rf .git
 alexmunk$ rm -rf .gitignore
 alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@54.153.4.215:/data/input/
 alexmunk$ vi dashbase.yml
-```
-
 - Delete host2
 - add remote host IP to host1 config block
 - Added path to ssh key: ~/.ssh/dashbase_alex_keypair.pem
@@ -40,7 +38,8 @@ alexmunk$ vi dashbase.yml
 - Change web.API_HOST: to <remote host IP>
 - Change web.API_PORT: to 9876 (to match the configured api port in the same file)
 - Change prefix to name the deployment. i.e. “alexs-deployment”
- 
+```
+
 Save dashbase.yml
 
 ```
@@ -49,4 +48,4 @@ alexmunk$ dashbase start cluster --config ~/Dev/dashbase-alexs-deployment/dashba
 [ec2-user@ip-172-31-10-146 ~]$ dashbase ps (should list all Dashbase services defined in dashbase.yml)
 ```
 
-Visit: https://<host IP where Web is running>:8080/search
+Visit: https://host IP where Web is running:8080/search
