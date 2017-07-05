@@ -44,4 +44,4 @@ alexmunk$ dashbase start cluster --config ~/Dev/dashbase-alexs-deployment/dashba
 [ec2-user@ip-172-31-10-146 ~]$ dashbase ps (should list all Dashbase services defined in dashbase.yml)
 ```
 
-Visit: https://host IP where Web is running:8080/search
+Visit: https://host-IP-where-Web-is-running:8080/search
