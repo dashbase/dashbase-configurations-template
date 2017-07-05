@@ -8,7 +8,12 @@ and mapping of machines to the services that should be installed on each.
 Dashbase is controlled by a CLI. The machine running the CLI is referred to as the "master machine". The master machine also
 contains the config directory for the deployment.
 
-This config assumes something like this has already happened on a remote machine:
+The following will help you start a cluster of Dashbase that looks like the following:
+* master machine: macbook
+* cluster machine: 1 ec2 instance, started from ami-0ea4886e (m4.xlarge recommended to get started)
+
+
+The work to make Dashbase run is something like this:
 
 ```
 [ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/index
@@ -18,11 +23,7 @@ This config assumes something like this has already happened on a remote machine
 [ec2-user@ip-172-31-10-146 ~]$ dashbase config
 [ec2-user@ip-172-31-10-146 ~]$ install zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ start zookeeper
-```
 
-Given the above, the work to make Dashbase run is something like this:
-
-```
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
 alexmunk$ cd dashbase-alexs-deployment
