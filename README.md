@@ -10,8 +10,8 @@ contains the config directory for the deployment.
 
 This config assumes something like this has already happened on a remote machine:
 
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/index
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/input (grr. This should be changed)
+* [ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/index
+* [ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/input (grr. This should be changed)
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user:ec2-user data
 [ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase (non-sudo fails)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase config
