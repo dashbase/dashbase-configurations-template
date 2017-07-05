@@ -25,6 +25,9 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ install zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ start zookeeper
 
+alexmunk$ sudo pip install dashbase
+alexmunk$ dashbase config (Home should be ~/.dashbase. all jars should be None)
+alexmunk$ dashbase version
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
 alexmunk$ cd dashbase-alexs-deployment
