@@ -31,6 +31,7 @@ alexmunk$ sudo pip install dashbase
 alexmunk$ dashbase config
 alexmunk$ dashbase version
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
+alexmunk$ mkdir dashbase-alexs-deployment
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
 alexmunk$ cd dashbase-alexs-deployment
 alexmunk$ rm -rf .git
