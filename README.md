@@ -38,14 +38,15 @@ alexmunk$ rm -rf .git
 alexmunk$ rm -rf .gitignore
 alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/data/input/
 alexmunk$ vi dashbase.yml
-- Delete host2
-- add remote host IP to host1 config block
-- Added path to ssh key: ~/.ssh/dashbase_alex_keypair.pem
+- set prefix to your chosen name of the deployment. i.e. “alexs-deployment”
+- set hosts.host1.hostname: remote-host-IP
+- set hosts.host1.username: ec2-user
+- set hosts.host1.private_key: ~/.ssh/your_ssh_key.pem
+- delete hosts.host2 configuration block
 - swap out all cases of host2 with host1
-- Change all cases of MONITOR_URL: to remote-host-IP:9888
-- Change web.API_HOST: to remote-host-IP
-- Change web.API_PORT: to 9876 (to match the configured api port in the same file)
-- Change prefix to name the deployment. i.e. “alexs-deployment”
+- set all cases of MONITOR_URL: remote-host-IP:9888 (there's probably one in api and another in json table)
+- set web.env.API_HOST: remote-host-IP
+- set web.env.API_PORT: 9876 (to match the configured api port in the same file)
 
 alexmunk$ dashbase start cluster --config ~/Dev/dashbase-alexs-deployment/dashbase.yml all
 
