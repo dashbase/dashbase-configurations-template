@@ -29,9 +29,9 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: logs/dashbase-api.log
+        currentLogFilename: ../logs/dashbase-api.log
         archive: true
-        archivedLogFilenamePattern: logs/dashbase-api-%d.log
+        archivedLogFilenamePattern: ../logs/dashbase-api-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
