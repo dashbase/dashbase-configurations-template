@@ -1,5 +1,5 @@
 dashbase:
-  baseDir: ../data/index
+  baseDir: ../index
 
   cluster:
     name: example-json
