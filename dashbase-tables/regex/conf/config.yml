@@ -1,5 +1,5 @@
 dashbase:
-  baseDir: ../data/index
+  baseDir: ../index
 
   cluster:
     name: example-regex
@@ -59,9 +59,9 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: ../logs/example-regex.log
+        currentLogFilename: logs/example-regex.log
         archive: true
-        archivedLogFilenamePattern: ../logs/example-regex-%d.log
+        archivedLogFilenamePattern: logs/example-regex-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
