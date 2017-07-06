@@ -17,26 +17,27 @@ The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4
 The work to make Dashbase run is something like this:
 
 ```
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/index
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/input (grr. This should be changed)
-[ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user:ec2-user /data
-[ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase (non-sudo fails)
+alexmunk$ sudo pip install dashbase
+alexmunk$ dashbase config
+alexmunk$ dashbase version
+alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
+alexmunk$ mkdir dashbase-alexs-deployment
+alexmunk$ cp -R dashbase-config-template/ dashbase-alexs-deployment/
+alexmunk$ cd dashbase-alexs-deployment
+alexmunk$ rm -rf .git
+alexmunk$ rm -rf .gitignore
+alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:~/.dashbase/data/input/
+
+Make the directory if it doesn't exist.
+[ec2-user@ip-172-31-10-146 ~]$ mkdir -p ~/.dashbase/data/input/
+[ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user:ec2-user /usr/local/lib/python2.7/
+[ec2-user@ip-172-31-10-146 ~]$ pip install dashbase (non-sudo fails if no permisisons to write to ^)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase config (Home should be ~/.dashbase. all jars should be None)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase version
 [ec2-user@ip-172-31-10-146 ~]$ dashbase install zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ dashbase start zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ dashbase ps (Should output that no Dashbase services are found/running)
 
-alexmunk$ sudo pip install dashbase
-alexmunk$ dashbase config
-alexmunk$ dashbase version
-alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
-alexmunk$ mkdir dashbase-alexs-deployment
-alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
-alexmunk$ cd dashbase-alexs-deployment
-alexmunk$ rm -rf .git
-alexmunk$ rm -rf .gitignore
-alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/data/input/
 alexmunk$ vi dashbase.yml
 - set prefix to your chosen name of the deployment. i.e. prefix: “alexs-deployment”
 - set hosts.host1.hostname: remote-host-IP
