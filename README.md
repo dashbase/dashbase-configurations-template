@@ -27,9 +27,9 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli start zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli ps (Should output that no Dashbase services are found/running)
 
-alexmunk$ sudo pip install dashbase
-alexmunk$ dashbase config
-alexmunk$ dashbase version
+alexmunk$ pip install dashbase
+alexmunk$ dashbase-cli config show
+alexmunk$ dashbase-cli version
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
 alexmunk$ mkdir dashbase-alexs-deployment
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
@@ -48,9 +48,9 @@ alexmunk$ vi dashbase.yml
 - set web.env.API_HOST: remote-host-IP
 - set web.env.API_PORT: 9876 (to match the configured api port in the same file)
 
-alexmunk$ dashbase start cluster --config ~/Dev/dashbase-alexs-deployment/dashbase.yml all
+alexmunk$ dashbase-cli start cluster --config ~/Dev/dashbase-alexs-deployment/dashbase.yml all
 
-[ec2-user@ip-172-31-10-146 ~]$ dashbase ps (should list all Dashbase services defined in dashbase.yml)
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli ps (should list all Dashbase services defined in dashbase.yml)
 ```
 
 Visit: http://remote-host-IP:8080/search
