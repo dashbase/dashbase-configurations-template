@@ -21,11 +21,11 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/input (grr. This should be changed)
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user:ec2-user /data
 [ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase (non-sudo fails)
-[ec2-user@ip-172-31-10-146 ~]$ dashbase config (Home should be ~/.dashbase. all jars should be None)
-[ec2-user@ip-172-31-10-146 ~]$ dashbase version
-[ec2-user@ip-172-31-10-146 ~]$ dashbase install zookeeper
-[ec2-user@ip-172-31-10-146 ~]$ dashbase start zookeeper
-[ec2-user@ip-172-31-10-146 ~]$ dashbase ps (Should output that no Dashbase services are found/running)
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli config show (Home should be ~/.dashbase. all jars should be None)
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli version
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli install zookeeper
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli start zookeeper
+[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli ps (Should output that no Dashbase services are found/running)
 
 alexmunk$ sudo pip install dashbase
 alexmunk$ dashbase config
