@@ -20,6 +20,7 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase
 [ec2-user@ip-172-31-10-146 ~]$ sudo pip uninstall dashbase
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/bin/
+[ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/lib/python2.7/site-packages/
 [ec2-user@ip-172-31-10-146 ~]$ pip install dashbase (so that cli can operate on dashbase without sudo)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli config show (Home should be ~/.dashbase. all jars should be None)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli version
