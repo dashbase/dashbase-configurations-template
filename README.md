@@ -17,10 +17,10 @@ The remote machine should be 1 m4 or r4 type ec2 instance, started from ami-0ea4
 The work to make Dashbase run is something like this:
 
 ```
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/index
-[ec2-user@ip-172-31-10-146 ~]$ sudo mkdir /data/input (grr. This should be changed)
-[ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user:ec2-user /data
-[ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase (non-sudo fails as of dashbase-1.0.0rc6.post1)
+[ec2-user@ip-172-31-10-146 ~]$ sudo pip install dashbase
+[ec2-user@ip-172-31-10-146 ~]$ sudo pip uninstall dashbase
+[ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/bin/
+[ec2-user@ip-172-31-10-146 ~]$ pip install dashbase (so that cli can operate on dashbase without sudo)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli config show (Home should be ~/.dashbase. all jars should be None)
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli version
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli install zookeeper
