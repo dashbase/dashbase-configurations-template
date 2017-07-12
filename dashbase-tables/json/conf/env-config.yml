@@ -1,5 +1,5 @@
 dashbase:
-  baseDir: /data/index
+  baseDir: ../index
 
   cluster:
     name: nginx-sample-data
@@ -8,7 +8,7 @@ dashbase:
   firehose:
     type: file
     params:
-      file: /data/input/nginx.json
+      file: ../sample-data/nginx.json
       numReplications: 1000000
 
   indexer:
@@ -58,9 +58,9 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: logs/example-json.log
+        currentLogFilename: ../logs/example-json.log
         archive: true
-        archivedLogFilenamePattern: logs/example-json-%d.log
+        archivedLogFilenamePattern: ../logs/example-json-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
