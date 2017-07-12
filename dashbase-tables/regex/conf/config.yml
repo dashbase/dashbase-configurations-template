@@ -2,13 +2,13 @@ dashbase:
   baseDir: ../index
 
   cluster:
-    name: example-regex
+    name: nginx-sample-data-regex
     url: localhost:2181
 
   firehose:
     type: file
     params:
-      file: ../data/nginx.log"
+      file: ../sample-data/nginx.log"
 
   indexer:
     maxIndexingDelayInSec: 5
