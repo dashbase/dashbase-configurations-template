@@ -22,22 +22,19 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/bin/
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/lib/python2.7/site-packages/
 [ec2-user@ip-172-31-10-146 ~]$ pip install dashbase (so that cli can operate on dashbase without sudo)
-[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli config show (Home should be ~/.dashbase. all jars should be None)
-[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli version
+[ec2-user@ip-172-31-10-146 ~]$ mkdir /home/ec2-user/.dashbase/sample-data
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli install zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli start zookeeper
-[ec2-user@ip-172-31-10-146 ~]$ dashbase-cli ps (Should output that no Dashbase services are found/running)
+
 
 alexmunk$ pip install dashbase
-alexmunk$ dashbase-cli config show
-alexmunk$ dashbase-cli version
 alexmunk$ git clone https://github.com/dashbase/dashbase-config-template.git
 alexmunk$ mkdir dashbase-alexs-deployment
 alexmunk$ cp -r dashbase-config-template/ dashbase-alexs-deployment/
 alexmunk$ cd dashbase-alexs-deployment
 alexmunk$ rm -rf .git
 alexmunk$ rm -rf .gitignore
-alexmunk$ scp -i ~/.ssh/dashbase_alex_keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/data/input/
+alexmunk$ scp -i ~/.ssh/your-keypair.pem dashbase-tables/json/data/nginx.json ec2-user@remote-host-ip:/home/ec2-user/.dashbase/sample-data/
 alexmunk$ vi dashbase.yml
 - set prefix to your chosen name of the deployment. i.e. prefix: “alexs-deployment”
 - set hosts.host1.hostname: remote-host-IP
