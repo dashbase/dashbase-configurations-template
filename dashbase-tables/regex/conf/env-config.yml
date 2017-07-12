@@ -8,7 +8,7 @@ dashbase:
   firehose:
     type: file
     params:
-      file: ../data/nginx.log"
+      file: ../sample-data/nginx.log"
 
   indexer:
     maxIndexingDelayInSec: 5
