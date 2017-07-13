@@ -10,7 +10,7 @@ server:
 
 
 auth:
-  host: your-dashbase-web-service-host:port
+  host: your-dashbase-auth-service-host:port #probably on 9677
 
 website:
   cdn: "https://cdn.domain.com"
