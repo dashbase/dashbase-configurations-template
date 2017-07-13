@@ -10,7 +10,7 @@ server:
 
 
 auth:
-  host: http://52.53.185.166:9677
+  host: your-dashbase-web-service-host:port
 
 website:
   cdn: "https://cdn.domain.com"
