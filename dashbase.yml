@@ -36,7 +36,7 @@ services:
     admin_port: 9777
     config: dashbase-auth/conf/config.yml
     env:
-      WEB_URL: http://52.53.185.166:8080
+      WEB_URL: <dashbase-web-service-host:port> # i.e. http://52.53.185.166:8080
 
   web:
     type: web
