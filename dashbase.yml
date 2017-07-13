@@ -29,14 +29,14 @@ services:
         env:
           MONITOR_URL: <monitor_hostname:port> # override higher level env
 
-  auth:
-    type: auth
-    host: host1
-    port: 9677
-    admin_port: 9777
-    config: dashbase-auth/conf/env-config.yml
-    env:
-      WEB_URL: <dashbase-web-service-host:port> # i.e. http://52.53.185.166:8080
+#  auth:
+#    type: auth
+#    host: host1
+#    port: 9677
+#    admin_port: 9777
+#    config: dashbase-auth/conf/env-config.yml
+#    env:
+#      WEB_URL: <dashbase-web-service-host:port> # i.e. http://x.x.x.x:8080
 
   web:
     type: web
