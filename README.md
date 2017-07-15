@@ -23,6 +23,7 @@ The work to make Dashbase run is something like this:
 [ec2-user@ip-172-31-10-146 ~]$ sudo chown -R ec2-user /usr/local/lib/python2.7/site-packages/
 [ec2-user@ip-172-31-10-146 ~]$ pip install dashbase (so that cli can operate on dashbase without sudo)
 [ec2-user@ip-172-31-10-146 ~]$ mkdir /home/ec2-user/.dashbase/sample-data
+[ec2-user@ip-172-31-10-146 ~]$ mkdir /home/ec2-user/.dashbase/auth # only necessary if configuring the auth service
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli install zookeeper
 [ec2-user@ip-172-31-10-146 ~]$ dashbase-cli start zookeeper
 
