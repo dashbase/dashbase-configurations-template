@@ -1,14 +1,15 @@
 dashbase:
-  baseDir: ../index
+  baseDir: /mnt/dashbase/index/json # requires write permissions
 
   cluster:
     name: example-json
-    url: localhost:2181
+    url: ${ZOOKEEPER_URL}
 
   firehose:
     type: file
     params:
-      file: ../sample-data/nginx.json
+      file: ../sample-data/nginx.json # this needs to be the path to the sample data on the remote host
+      numReplications: 1000000
 
   indexer:
     maxIndexingDelayInSec: 5
@@ -17,10 +18,8 @@ dashbase:
     type: json
     params:
       pattern:
-        timeFormat: "dd/MMM/yyyy:HH:mm:ss Z"
+        timeFormat: now
         schema:
-          - name: timestamp
-            type: time
           - name: host
             type: meta
           - name: request
@@ -32,20 +31,23 @@ dashbase:
           - name: agent
             type: text
 
+  retention:
+    numDays: .02 # number of days before expiring time-slices. e.g. 0.5 days
+
 server:
   applicationContextPath: /
   adminContextPath: /admin
   applicationConnectors:
     - type: http
-      port: 7888
+      port: ${PORT}
   adminConnectors:
     - type: http
-      port: 7988
+      port: ${ADMINPORT}
 
 metrics:
   reporters:
     - type: dashbase
-      url: localhost:9888 # host port of monitor
+      url: ${MONITOR_URL} # host port of monitor
       includes:
         - ^jvm.*$
         - ^dashbase.*$
@@ -56,11 +58,11 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: ../logs/example-json.log
+        currentLogFilename: ../logs/nginx-json.log
         archive: true
-        archivedLogFilenamePattern: ../logs/example-json-%d.log
+        archivedLogFilenamePattern: ../logs/nginx-json-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
-        url: localhost:9888 # host port of monitor
+        url: ${MONITOR_URL} # host port of monitor
         timeZone: UTC

@@ -1,21 +1,21 @@
 cluster:
   name: example-api
-  url: localhost:2181 # zookeeper url
+  url: ${ZOOKEEPER_URL}
 
 server:
   applicationConnectors:
     - type: http
-      port: 9876
+      port: ${PORT}
   applicationContextPath: /
   adminContextPath: /admin
   adminConnectors:
       - type: http
-        port: 9976
+        port: ${ADMINPORT}
 
 metrics:
   reporters:
     - type: dashbase
-      url: localhost:9888 # host port of monitor
+      url: ${MONITOR_URL} # host port of monitor
       meta:
         name: example-api
         type: dashbase-api
@@ -29,13 +29,13 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: ../logs/dashbase-api.log
+        currentLogFilename: logs/dashbase-api.log
         archive: true
-        archivedLogFilenamePattern: ../logs/dashbase-api-%d.log
+        archivedLogFilenamePattern: logs/dashbase-api-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
-        url: localhost:9888  # host port of monitor
+        url: ${MONITOR_URL}  # host port of monitor
         meta:
           name: example-api
           type: dashbase-api

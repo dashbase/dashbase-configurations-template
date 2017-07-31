@@ -1,0 +1,49 @@
+dashbase:
+  baseDir: /mnt/dashbase/index/http # requires write permissions
+
+  cluster:
+    name: example-http
+    url: ${ZOOKEEPER_URL}
+
+  firehose:
+    type: http
+
+  indexer:
+    maxIndexingDelayInSec: 5
+
+  parser:
+    type: json
+
+  retention:
+    numDays: .02 # number of days before expiring time-slices. e.g. 0.5 days
+
+server:
+  applicationConnectors:
+  - type: http
+    port: ${PORT}
+  adminConnectors:
+  - type: http
+    port: ${ADMINPORT}
+
+metrics:
+  reporters:
+    - type: dashbase
+      url: ${MONITOR_URL} # host port of monitor
+      includes:
+        - ^jvm.*$
+        - ^dashbase.*$
+      useRegexFilters: true
+      frequency: 5 seconds
+
+logging:
+  level: INFO
+  appenders:
+      - type: file
+        currentLogFilename: ../logs/dashbase-http.log
+        archive: true
+        archivedLogFilenamePattern: ../logs/dashbase-http-%d.log
+        archivedFileCount: 7
+        timeZone: UTC
+      - type: dashbase
+        url: ${MONITOR_URL} # host port of monitor
+        timeZone: UTC
