@@ -6,7 +6,18 @@ zookeeper_url: localhost:2181 # url to zookeeper, when specified, ${ZOOKEEPER_UR
 services:
 
 #  example: this is a name identifier for the service which can be changed to suit personal preferences
-#   type:  
+#   type: REQUIRED, monitor, table, web, api, auth, alerts
+#   config: REQUIRED, </path/to/config.yml>
+#   defaults: REQUIRED for table and monitor types, if neither, don't nest the below
+#     host: REQUIRED, match a host in hosts section
+#     port: REQUIRED, give the table partition a port
+#     admin_port: REQUIRED, give the table partition an admin port
+#     heap_opts: OPTIONAL, "-Xmx2g -Xms1g -XX:NewSize=1g"
+#   env: OPTIONAL, exported on start
+#     key: value
+#     key1: value1
+#   partitions: REQUIRED for table and monitor types only, specifies the partitions and their mappings
+#     0: # use defaults
 
   
   # internal monitor table
