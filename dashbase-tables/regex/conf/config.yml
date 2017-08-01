@@ -42,6 +42,8 @@ dashbase:
     numDays: .02 # number of days before expiring time-slices. e.g. 0.5 days
 
 server:
+  applicationContextPath: /
+  adminContextPath: /admin
   applicationConnectors:
   - type: http
     port: ${PORT}

@@ -23,7 +23,7 @@ services:
   # internal monitor table
   _system:
     type: monitor  
-    config:
+    config: dashbase-monitor/conf/config.yml
     defaults:
       host: host1
       port: 9888 # exported as PORT=9888
@@ -42,7 +42,7 @@ services:
       admin_port: 7988
       heap_opts: "-Xmx2g -Xms1g -XX:NewSize=1g" # optional, but recommend changing since default is "-Xmx1g -Xms1g -XX:NewSize=512m"
     env:
-      MONITOR_URL: <monitor_hostname:port>
+      MONITOR_URL: localhost:9888
     partitions:
       0: # use defaults
         # override defaults
@@ -100,7 +100,7 @@ services:
     heap_opts: "-Xmx1g -Xms1g -XX:NewSize=512m" # optional, default is "-Xmx1g -Xms1g -XX:NewSize=512m"
     config: dashbase-web/conf/config.yml
     env:
-      API_HOST: <api_hostname> # should match api host hostname
+      API_HOST: localhost # should match api host hostname
       API_PORT: 9876 # should match api port
 
   my-api: # just a name identifier; can be changed to suit personal preferences
@@ -109,12 +109,12 @@ services:
     port: 9876
     admin_port: 9976
     heap_opts: "-Xmx1g -Xms1g -XX:NewSize=512m"
-    config: dashbase-api/conf/env-config.yml
+    config: dashbase-api/conf/config.yml
     env:
-      MONITOR_URL: <monitor_hostname:port>
+      MONITOR_URL: localhost:9888
 
 hosts:
   host1: # just a name identifier; can be changed to suit personal preferences
-    hostname: <address> # e.g. x.x.x.x or http://someserver.com
+    hostname: localhost # e.g. x.x.x.x or http://someserver.com
     username: ec2-user # or an existing user on remote host
-    private_key: </path/to/key.pem>
+    private_key: ~/.ssh/dashbase-test.pem
