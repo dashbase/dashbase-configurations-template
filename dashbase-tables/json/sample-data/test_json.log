@@ -1,1 +1,1 @@
-{"timestamp": "2016-03-10t06:25:33.890+0000","severity": "STDOUT","logtype": "json","org": "org-name","space": "space1","hostname": "host","appname": "app1","message": "this is test message"}
+{"time":1448013937000,"host":"61.135.194.175","request":"POST mobile.acme.com/mobile/data","responseCode":"200","numBytes":1051,"agent":"Dalvik/1.6.0 (Linux; U; Android 4.2.2; rk30sdk Build/JDQ39)"}
