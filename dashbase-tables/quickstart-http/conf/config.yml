@@ -1,8 +1,8 @@
 dashbase:
-  baseDir: /mnt/dashbase/index/http # requires write permissions
+  baseDir: ~/.dashbase/index/quickstart-http # requires write permissions
 
   cluster:
-    name: example-http
+    name: quickstart-http
     url: ${ZOOKEEPER_URL}
 
   firehose:
@@ -41,9 +41,9 @@ logging:
   level: INFO
   appenders:
       - type: file
-        currentLogFilename: ../logs/dashbase-http.log
+        currentLogFilename: ../logs/quickstart-http.log
         archive: true
-        archivedLogFilenamePattern: ../logs/dashbase-http-%d.log
+        archivedLogFilenamePattern: ../logs/quickstart-http-%d.log
         archivedFileCount: 7
         timeZone: UTC
       - type: dashbase
