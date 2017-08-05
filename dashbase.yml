@@ -2,10 +2,12 @@ prefix: "my-cluster"
 zookeeper_host: host1 # host to run zookeeper on; when specified, installs and starts zookeeper on the specified host
 # reinstall: true/false # will reinstall, used when upgrading/downgrading the dashbase version
 # version: 1.0.0-rc5 # defaults to latest
-# env:
-#   MONITOR_URL: localhost:9888
-#   API_HOST: localhost
-#   API_PORT: 9876
+env:
+  ZOOKEEPER_URL: localhost:2181
+  MONITOR_URL: localhost:9888
+  API_HOST: localhost
+  API_PORT: 9876
+
 services:
 
 #  example: this is a name identifier for the service which can be changed to suit personal preferences
