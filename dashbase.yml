@@ -28,7 +28,7 @@ services:
   # internal monitor table
   _system:
     type: monitor  
-    config: dashbase-monitor/conf/config.yml
+    config: dashbase-tables/_system/conf/config.yml
     defaults:
       host: host1
       port: 9888 # exported as PORT=9888
@@ -121,5 +121,5 @@ services:
 hosts:
   host1: # just a name identifier; can be changed to suit personal preferences
     hostname: localhost # e.g. x.x.x.x or http://someserver.com
-    username: ec2-user # or an existing user on remote host
-    private_key: ~/.ssh/dashbase_alex_keypair.pem
+    username: # or an existing user on remote host
+    private_key:
