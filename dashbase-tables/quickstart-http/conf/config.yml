@@ -1,5 +1,5 @@
 dashbase:
-  baseDir: ~/.dashbase/index/quickstart-http # requires write permissions
+  baseDir: ../index/quickstart-http # requires write permissions; relatives paths are relative to where the config.yml is
 
   cluster:
     name: quickstart-http
