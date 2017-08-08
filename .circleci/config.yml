@@ -1,14 +1,16 @@
 version: 2
 jobs:
    build:
-     docker:
-       - image: circleci/python:2.7.13
+     machine:
+       enabled: true
      steps:
        - run:
           name: Install dependencies
           command:
             pip install awscli --upgrade --user
    deploy:
+     machine:
+       enabled: true
      requires:
        - build
      steps:
