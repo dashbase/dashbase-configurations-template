@@ -1,6 +1,6 @@
 version: 2
 jobs:
-   build:
+   create_package:
      machine:
        enabled: true
      steps:
@@ -15,7 +15,7 @@ jobs:
             cp -R . ~/dashbase-quickstart/
             tar -zcvf ~/dashbase-quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
    
-   deploy:
+   deploy_package:
      steps:
        - checkout
        - run:
@@ -30,9 +30,9 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  create-and-deploy:
     jobs:
-      - build
-      - deploy:
+      - create_package
+      - deploy_package:
         requires:
-          - build
+          - create_package
