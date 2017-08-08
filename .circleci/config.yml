@@ -7,7 +7,7 @@ jobs:
        - checkout
        - run:
           name: Install dependencies
-          command: pip install awscli --upgrade
+          command: apt-get update && apt-get install -y awscli
        - run:
           name: Copy and package configs
           command: |
