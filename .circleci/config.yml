@@ -22,5 +22,3 @@ jobs:
           command: |
             echo '{"names":["quickstart"]} > template_names.json
             aws s3 sync template_names.json s3://dashbase-public/
-
-'
