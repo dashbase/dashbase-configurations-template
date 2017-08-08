@@ -8,19 +8,16 @@ jobs:
           name: Install dependencies
           command:
             pip install awscli --upgrade --user
-   deploy:
-     machine:
-       enabled: true
-     requires:
-       - build
-     steps:
-       - checkout
-       - run:
+      - run:
           name: Copy and package configs
           command: |
             mkdir ~/dashbase-quickstart
             cp -R . ~/dashbase-quickstart/
             tar -zcvf ~/dashbase-quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
+   
+   deploy:
+     steps:
+       - checkout
        - run:
           name: Sync to AWS S3 bucket
           command:
@@ -30,3 +27,12 @@ jobs:
           command:
             echo '{"names":["quickstart"]} > template_names.json
             aws s3 sync template_names.json s3://dashbase-public/
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+        requires:
+          - build
