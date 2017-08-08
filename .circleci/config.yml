@@ -7,7 +7,7 @@ jobs:
        - checkout
        - run:
           name: Install dependencies
-          command: pip install awscli --upgrade --user
+          command: pip install awscli --upgrade
        - run:
           name: Copy and package configs
           command: |
