@@ -18,7 +18,7 @@ jobs:
           name: Sync to AWS S3 bucket
           command: aws s3 sync ~/dashbase-quickstart.tar.gz s3://dashbase-public/quickstart/
        - run:
-          name: Update template_names.json
+          name: Update template_names.json file
           command: |
             echo '{"names":["quickstart"]} > template_names.json
             aws s3 sync template_names.json s3://dashbase-public/
