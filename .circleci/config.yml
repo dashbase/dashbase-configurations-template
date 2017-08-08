@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  package-and-sync:
+  build:
     machine:
       enabled: true
     steps:
