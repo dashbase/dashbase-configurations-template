@@ -3,26 +3,17 @@ jobs:
   build:
     machine:
       enabled: true
+    working_directory: ~/dashbase-quickstart
     steps:
       - run:
           name: Install dependencies
           command: pip install awscli --upgrade --user
       - run:
-          name: Copy Configs
-          command: |
-              cd ~/
-              mkdir dashbase-quickstart
-              cp -R project/ dashbase-quickstart/ 
-      - run:
           name: Create Package
-          command: |
-              cd ~/
-              tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" dashbase-quickstart
+          command: tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" .
       - run:
           name: Sync Package to S3
-          command: |
-              cd ~/
-              aws s3 sync quickstart.tar.gz s3://dashbase-public/quickstart/
+          command: aws s3 sync quickstart.tar.gz s3://dashbase-public/quickstart/
       - run:
           name: Update template_names.json file
           command: |
