@@ -8,15 +8,17 @@ jobs:
           name: Install dependencies
           command: pip install awscli --upgrade --user
       - run:
-          name: Package and sync configs
+          name: Copy Configs
           command: |
               cd ~/
               mkdir dashbase-quickstart
-              cp -R project/ dashbase-quickstart/
-              pwd
-              ls
-              tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" dashbase-quickstart
-              aws s3 sync quickstart.tar.gz s3://dashbase-public/quickstart/
+              cp -R project/ dashbase-quickstart/ 
+      - run:
+          name: Create Package
+          command: tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" dashbase-quickstart
+      - run:
+          name: Sync Package to S3
+          command: aws s3 sync quickstart.tar.gz s3://dashbase-public/quickstart/
       - run:
           name: Update template_names.json file
           command: |
