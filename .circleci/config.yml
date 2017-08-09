@@ -11,10 +11,10 @@ jobs:
           command: pip install awscli --upgrade --user
       - run:
           name: Create Package
-          command: tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" .
+          command: tar -zcvf ~/quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" .
       - run:
           name: Sync Package to S3
-          command: aws s3 cp quickstart.tar.gz s3://dashbase-public/quickstart/
+          command: aws s3 cp ~/quickstart.tar.gz s3://dashbase-public/quickstart/
       - run:
           name: Update template_names.json file
           command: |
