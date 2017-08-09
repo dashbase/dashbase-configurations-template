@@ -1,25 +1,24 @@
 version: 2
 jobs:
-  build:
-    machine:
-      enabled: true
-    steps:
+   build:
+     machine:
+       enabled: true
+     steps:
       - run:
-        name: Install dependencies
-        command:
-          pip install awscli --upgrade --user
+          name: Install dependencies
+          command:
+            pip install awscli --upgrade --user
       - run:
-        name: Copy and package configs
-        command: |
-          mkdir ~/dashbase-quickstart
-          cp -R . ~/dashbase-quickstart/
-          tar -zcvf ~/dashbase-quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
-      - run:
-        name: Sync to AWS S3 bucket
-        command:
-          aws s3 sync ~/dashbase-quickstart.tar.gz s3://dashbase-public/quickstart/
-      - run:
-        name: Update template_names.json file
-        command:
-          echo '{"names":["quickstart"]} > template_names.json
-          aws s3 sync template_names.json s3://dashbase-public/
+          name: Copy and package configs
+          command: |
+              mkdir ~/dashbase-quickstart
+              cp -R . ~/dashbase-quickstart/
+              tar -zcvf ~/dashbase-quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
+       - run:
+          name: Sync to AWS S3 bucket
+          command: aws s3 sync ~/dashbase-quickstart.tar.gz s3://dashbase-public/quickstart/
+       - run:
+          name: Update template_names.json file
+          command: |
+              echo '{"names":["quickstart"]} > template_names.json
+              aws s3 sync template_names.json s3://dashbase-public/
