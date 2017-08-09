@@ -14,6 +14,9 @@ jobs:
               cp -R . ~/dashbase-quickstart/
               tar -zcvf ~/quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
       - run:
+          name: Debug
+          command: pwd && ls
+      - run:
           name: Sync to AWS S3 bucket
           command: |
               aws s3 sync ~/quickstart.tar.gz s3://dashbase-public/quickstart/
