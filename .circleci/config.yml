@@ -10,7 +10,7 @@ jobs:
           command: pip install awscli --upgrade --user
       - run:
           name: Create Package
-          command: tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" .
+          command: tar -zcvf quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" --exclude="*.tar.gz" .
       - run:
           name: Sync Package to S3
           command: aws s3 cp quickstart.tar.gz s3://dashbase-public/quickstart/
