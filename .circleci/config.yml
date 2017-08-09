@@ -13,11 +13,12 @@ jobs:
               mkdir ~/dashbase-quickstart
               cp -R . ~/dashbase-quickstart/
               tar -zcvf ~/dashbase-quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ~/dashbase-quickstart
-              ls
+      - run:
+          name: Debug
+          command: ls ~/
       - run:
           name: Sync to AWS S3 bucket
           command: |
-              ls
               aws s3 sync ~/dashbase-quickstart.tar.gz s3://dashbase-public/quickstart/
       - run:
           name: Update template_names.json file
