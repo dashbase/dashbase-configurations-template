@@ -10,10 +10,10 @@ jobs:
       - run:
           name: Package and sync configs
           command: |
-              mkdir ../dashbase-quickstart
-              cp -R . ../dashbase-quickstart/
-              tar -zcvf ../quickstart.tar.gz --exclude="*.git*" --exclude="*.circle*" ../dashbase-quickstart
-              aws s3 sync ../quickstart.tar.gz s3://dashbase-public/quickstart/
+              mkdir /home/circleci/dashbase-quickstart
+              cp -R /home/circleci/dashbase-quickstart/
+              tar -zcvf /home/circleci/quickstart.tar.gz --excl/ude="*.git*" --exclude="*.circle*" /home/circleci/dashbase-quickstart
+              aws s3 sync /home/circleci/quickstart.tar.gz s3://dashbase-public/quickstart/
       - run:
           name: Update template_names.json file
           command: |
