@@ -15,11 +15,6 @@ jobs:
       - run:
           name: Sync Package to S3
           command: aws s3 cp ~/quickstart.tar.gz s3://dashbase-public/quickstart/
-      - run:
-          name: Update template_names.json file
-          command: |
-              echo '{"names":["quickstart"]}' > template_names.json
-              aws s3 cp template_names.json s3://dashbase-public/
 
 workflows:
   version: 2
