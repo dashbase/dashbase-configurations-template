@@ -8,7 +8,7 @@ dashbase:
   # following configurations only applies to server mode
 
   # base directory
-  baseDir: /mnt/dashbase/index/_system
+  baseDir: ~/.dashbase/index/_system
 
   # indexing parameters (optional)
   indexer:
