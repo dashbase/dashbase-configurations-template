@@ -12,7 +12,7 @@ dashbase:
       numReplications: 1000000
 
   indexer:
-    maxIndexingDelayInSec: 5
+    maxBufferDelayInSec: 5
 
   parser:
     type: json

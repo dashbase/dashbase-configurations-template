@@ -12,8 +12,9 @@ dashbase:
 
   # indexing parameters (optional)
   indexer:
-     maxDocsPerSegment: 100000
-     maxIndexingDelayInSec: 10
+     maxBufferedSizeMB: 50
+     minBufferedSizeMB: 20
+     maxBufferDelayInSec: 10
 
   retention:
     expirationHandler:

@@ -9,7 +9,7 @@ dashbase:
     type: http
 
   indexer:
-    maxIndexingDelayInSec: 5
+    maxBufferDelayInSec: 5
 
   parser:
     type: json
