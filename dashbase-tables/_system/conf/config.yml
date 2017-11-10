@@ -9,6 +9,12 @@ dashbase:
   # base directory
   baseDir: ~/.dashbase/index/_system
 
+  # indexing parameters (optional)
+  indexer:
+     maxBufferedSizeMB: 50
+     minBufferedSizeMB: 20
+     maxBufferDelayInSec: 10
+
   retention:
     expirationHandler:
       params:
