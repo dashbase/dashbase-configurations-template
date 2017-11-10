@@ -2,8 +2,7 @@ dashbase:
   baseDir: ~/.dashbase/index/quickstart-http # requires write permissions
 
   cluster:
-    name: quickstart-http
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/test/quickstart-http
 
   firehose:
     type: http

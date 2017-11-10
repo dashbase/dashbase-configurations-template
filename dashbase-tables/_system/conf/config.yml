@@ -2,8 +2,7 @@
 dashbase:
   # cluster configuration
   cluster:
-    name: _system
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/test/_system
 
   # following configurations only applies to server mode
 

@@ -2,8 +2,7 @@ dashbase:
   baseDir: /mnt/dashbase/index/json # requires write permissions
 
   cluster:
-    name: example-json
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/test/example-json
 
   firehose:
     type: file
