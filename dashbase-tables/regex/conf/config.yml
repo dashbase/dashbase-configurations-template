@@ -2,7 +2,7 @@ dashbase:
   baseDir: /mnt/dashbase/index/regex # requires write permissions
 
   cluster:
-    url: zk://${ZOOKEEPER_URL}/dashbase/test/example-regex
+    url: zk://${ZOOKEEPER_URL}/dashbase/regex-sample
 
   firehose:
     type: file

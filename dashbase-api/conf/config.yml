@@ -1,6 +1,5 @@
 cluster:
-  name: example-api
-  url: ${ZOOKEEPER_URL}
+  url: zk://${ZOOKEEPER_URL}/dashbase
 
 license: dashbase-license.yml
 
