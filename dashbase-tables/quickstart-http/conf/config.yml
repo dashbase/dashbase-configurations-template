@@ -2,14 +2,13 @@ dashbase:
   baseDir: ~/.dashbase/index/quickstart-http # requires write permissions
 
   cluster:
-    name: quickstart-http
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/quickstart-table
 
   firehose:
     type: http
 
   indexer:
-    maxIndexingDelayInSec: 5
+    maxBufferDelayInSec: 5
 
   parser:
     type: json

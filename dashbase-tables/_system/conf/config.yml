@@ -2,18 +2,12 @@
 dashbase:
   # cluster configuration
   cluster:
-    name: _system
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/_system
 
   # following configurations only applies to server mode
 
   # base directory
   baseDir: ~/.dashbase/index/_system
-
-  # indexing parameters (optional)
-  indexer:
-     maxDocsPerSegment: 100000
-     maxIndexingDelayInSec: 10
 
   retention:
     expirationHandler:

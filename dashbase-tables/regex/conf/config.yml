@@ -2,8 +2,7 @@ dashbase:
   baseDir: /mnt/dashbase/index/regex # requires write permissions
 
   cluster:
-    name: example-regex
-    url: ${ZOOKEEPER_URL}
+    url: zk://${ZOOKEEPER_URL}/dashbase/regex-sample
 
   firehose:
     type: file
@@ -12,7 +11,7 @@ dashbase:
       numReplications: 1000000
 
   indexer:
-    maxIndexingDelayInSec: 5
+    maxBufferDelayInSec: 5
 
   parser:
     type: regex
